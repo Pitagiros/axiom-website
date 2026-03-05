@@ -3,23 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axiom Engineering - Under Construction</title>
+    <title>Axiom Engineering</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* --- ΚΕΝΤΡΟ ΕΛΕΓΧΟΥ --- */
+            --bg-color: #111111;
+            --logo-width: 1200px;        /* Το μέγεθος που θέλεις */
+            --logo-vertical-shift: -150px; /* ΡΥΘΜΙΣΗ: Βάλε π.χ. -100px για να πάει ΟΛΟ πιο πάνω */
+            --text-top-margin: -250px;    /* Απόσταση κειμένου από το logo */
+            --text-spacing: 15px;        
+            --reveal-speed: 2s;          
+        }
+
         body {
-            background-color: #2c2c2c; /* Σκούρο γκρι background */
+            margin: 0;
+            background-color: var(--bg-color);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
+            width: 100vw;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
         }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            /* Η ΜΑΓΕΙΑ: Μετακινεί όλο το σύνολο κάθετα */
+            transform: translateY(var(--logo-vertical-shift));
+        }
+
+        .logo-box {
+            width: var(--logo-width);
+            max-width: 95vw;
+            filter: blur(20px) brightness(0);
+            transform: scale(1.05);
+            animation: logoReveal var(--reveal-speed) forwards 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         img {
-            max-width: 80%;
+            width: 100%;
             height: auto;
+            display: block;
+        }
+
+        h1 {
+            color: white;
+            font-weight: 300;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            letter-spacing: var(--text-spacing);
+            text-transform: uppercase;
+            margin: 0;
+            margin-top: var(--text-top-margin); 
+            opacity: 0;
+            animation: textFadeIn 1.5s forwards 1.8s ease-out;
+            white-space: nowrap;
+        }
+
+        /* --- ANIMATIONS --- */
+
+        @keyframes logoReveal {
+            to { 
+                filter: blur(0) brightness(1);
+                transform: scale(1);
+            }
+        }
+
+        @keyframes textFadeIn {
+            from { 
+                opacity: 0; 
+                filter: blur(5px);
+                transform: translateY(10px);
+            }
+            to { 
+                opacity: 0.6; 
+                filter: blur(0);
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Fixes */
+        @media (max-width: 768px) {
+            :root { 
+                --logo-width: 90vw;
+                --logo-vertical-shift: -20px;
+                --text-top-margin: 10px; 
+                --text-spacing: 6px;
+            }
         }
     </style>
 </head>
 <body>
-    <img src="logo.png" alt="Axiom Logo">
+    <div class="container">
+        <div class="logo-box">
+            <img src="logo.png" alt="Axiom Logo">
+        </div>
+        <h1>UNDER CONSTRUCTION</h1>
+    </div>
 </body>
 </html>
