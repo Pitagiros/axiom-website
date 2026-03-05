@@ -7,19 +7,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* --- ΚΕΝΤΡΟ ΕΛΕΓΧΟΥ (ΡΥΘΜΙΣΕΙΣ) --- */
+            /* --- ΚΕΝΤΡΟ ΕΛΕΓΧΟΥ --- */
             --bg-color: #111111;
             --logo-width: 1200px;        
-            --logo-vertical-shift: -150px; /* Μετακίνηση όλου του συνόλου πάνω/κάτω */
-            --text-top-margin: -250px;    /* Απόσταση κειμένου από το logo */
+            --logo-vertical-shift: -150px; 
+            --text-top-margin: -250px;    
             --text-spacing: 15px;        
 
             /* --- ΧΡΟΝΟΙ ANIMATION --- */
-            --logo-ani-duration: 2s;   /* Πόση ώρα διαρκεί το focus εφέ */
-            --logo-ani-delay: 0.5s;      /* Πότε ξεκινάει το logo */
-            
-            --text-ani-duration: 1s;   /* Πόση ώρα διαρκεί η εμφάνιση του κειμένου */
-            --text-ani-delay: 1.2s;      /* Πότε ξεκινάει το κείμενο (βάλε το μετά το logo) */
+            --logo-ani-duration: 2s;   
+            --logo-ani-delay: 0.5s;      
+            --text-ani-duration: 1s;   
+            --text-ani-delay: 1.2s;      
         }
 
         body {
@@ -45,7 +44,6 @@
         .logo-box {
             width: var(--logo-width);
             max-width: 95vw;
-            /* Αρχική κατάσταση πριν το animation */
             filter: blur(25px) brightness(0);
             transform: scale(1.05);
             animation: logoReveal var(--logo-ani-duration) forwards var(--logo-ani-delay) cubic-bezier(0.4, 0, 0.2, 1);
@@ -70,6 +68,31 @@
             white-space: nowrap;
         }
 
+        /* --- ΣΤΟΙΧΕΙΑ ΕΠΙΚΟΙΝΩΝΙΑΣ (ΚΑΤΩ ΑΡΙΣΤΕΡΑ) --- */
+        .contact-info {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            color: rgba(255, 255, 255, 0.5); /* Ημιδιάφανο λευκό για διακριτικότητα */
+            font-weight: 300;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: textFadeIn 1s forwards var(--text-ani-delay);
+            z-index: 10;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #ff6600; /* Πορτοκαλί στο hover */
+        }
+
         /* --- ANIMATIONS --- */
 
         @keyframes logoReveal {
@@ -82,12 +105,10 @@
         @keyframes textFadeIn {
             from { 
                 opacity: 0; 
-                filter: blur(5px);
                 transform: translateY(10px);
             }
             to { 
                 opacity: 0.6; 
-                filter: blur(0);
                 transform: translateY(0);
             }
         }
@@ -100,15 +121,28 @@
                 --text-top-margin: 15px; 
                 --text-spacing: 6px;
             }
+            .contact-info {
+                bottom: 20px;
+                left: 20px;
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <div class="logo-box">
             <img src="logo.png" alt="Axiom Logo">
         </div>
         <h1>UNDER CONSTRUCTION</h1>
     </div>
+
+    <div class="contact-info">
+        T: <a href="tel:+306987591751">+30 698 759 1751</a><br>
+        E: <a href="mailto:info@axiomeng.gr">info@axiomeng.gr</a><br>
+        Zakynthos, Greece
+    </div>
+
 </body>
 </html>
