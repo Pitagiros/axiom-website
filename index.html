@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* --- ΚΕΝΤΡΟ ΕΛΕΓΧΟΥ --- */
+            /* --- ΚΕΝΤΡΟ ΕΛΕΓΧΟΥ (ΟΙ ΡΥΘΜΙΣΕΙΣ ΣΟΥ) --- */
             --bg-color: #111111;
             --logo-width: 1200px;        
             --logo-vertical-shift: -150px; 
@@ -73,24 +73,30 @@
             position: absolute;
             bottom: 40px;
             left: 40px;
-            color: rgba(255, 255, 255, 0.5); /* Ημιδιάφανο λευκό για διακριτικότητα */
+            color: #ffffff; /* Καθαρό λευκό στα στατικά κείμενα */
             font-weight: 300;
             font-size: 0.85rem;
-            line-height: 1.8;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             opacity: 0;
             animation: textFadeIn 1s forwards var(--text-ani-delay);
             z-index: 10;
         }
 
+        .contact-item {
+            padding-bottom: 10px; /* Το padding που ζήτησες */
+            display: block;
+        }
+
         .contact-info a {
-            color: white;
+            color: #ffffff;
             text-decoration: none;
-            transition: color 0.3s;
+            opacity: 0.8; /* Ελαφρώς πιο αχνό για να μην "χτυπάει", αλλά γίνεται 100% στο hover */
+            transition: all 0.3s ease;
         }
 
         .contact-info a:hover {
-            color: #ff6600; /* Πορτοκαλί στο hover */
+            opacity: 1;
+            color: #ff6600; /* Πορτοκαλί Axiom στο hover */
         }
 
         /* --- ANIMATIONS --- */
@@ -108,7 +114,7 @@
                 transform: translateY(10px);
             }
             to { 
-                opacity: 0.6; 
+                opacity: 0.8; 
                 transform: translateY(0);
             }
         }
@@ -124,7 +130,7 @@
             .contact-info {
                 bottom: 20px;
                 left: 20px;
-                font-size: 0.7rem;
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -139,9 +145,9 @@
     </div>
 
     <div class="contact-info">
-        T: <a href="tel:+306987591751">+30 698 759 1751</a><br>
-        E: <a href="mailto:info@axiomeng.gr">info@axiomeng.gr</a><br>
-        Zakynthos, Greece
+        <span class="contact-item">T: <a href="tel:+306987591751">+30 698 759 1751</a></span>
+        <span class="contact-item">E: <a href="mailto:info@axiomeng.gr">info@axiomeng.gr</a></span>
+        <span class="contact-item">Zakynthos, Greece</span>
     </div>
 
 </body>
