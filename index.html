@@ -7,13 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* --- ΚΕΝΤΡΟ ΕΛΕΓΧΟΥ --- */
+            /* --- ΚΕΝΤΡΟ ΕΛΕΓΧΟΥ (ΡΥΘΜΙΣΕΙΣ) --- */
             --bg-color: #111111;
-            --logo-width: 1200px;        /* Το μέγεθος που θέλεις */
-            --logo-vertical-shift: -150px; /* ΡΥΘΜΙΣΗ: Βάλε π.χ. -100px για να πάει ΟΛΟ πιο πάνω */
+            --logo-width: 1200px;        
+            --logo-vertical-shift: -150px; /* Μετακίνηση όλου του συνόλου πάνω/κάτω */
             --text-top-margin: -250px;    /* Απόσταση κειμένου από το logo */
             --text-spacing: 15px;        
-            --reveal-speed: 1s;          
+
+            /* --- ΧΡΟΝΟΙ ANIMATION --- */
+            --logo-ani-duration: 2s;   /* Πόση ώρα διαρκεί το focus εφέ */
+            --logo-ani-delay: 0.5s;      /* Πότε ξεκινάει το logo */
+            
+            --text-ani-duration: 1s;   /* Πόση ώρα διαρκεί η εμφάνιση του κειμένου */
+            --text-ani-delay: 1.2s;      /* Πότε ξεκινάει το κείμενο (βάλε το μετά το logo) */
         }
 
         body {
@@ -33,16 +39,16 @@
             flex-direction: column;
             align-items: center;
             position: relative;
-            /* Η ΜΑΓΕΙΑ: Μετακινεί όλο το σύνολο κάθετα */
             transform: translateY(var(--logo-vertical-shift));
         }
 
         .logo-box {
             width: var(--logo-width);
             max-width: 95vw;
-            filter: blur(20px) brightness(0);
+            /* Αρχική κατάσταση πριν το animation */
+            filter: blur(25px) brightness(0);
             transform: scale(1.05);
-            animation: logoReveal var(--reveal-speed) forwards 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: logoReveal var(--logo-ani-duration) forwards var(--logo-ani-delay) cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         img {
@@ -60,7 +66,7 @@
             margin: 0;
             margin-top: var(--text-top-margin); 
             opacity: 0;
-            animation: textFadeIn 1.5s forwards 1.8s ease-out;
+            animation: textFadeIn var(--text-ani-duration) forwards var(--text-ani-delay) ease-out;
             white-space: nowrap;
         }
 
@@ -90,8 +96,8 @@
         @media (max-width: 768px) {
             :root { 
                 --logo-width: 90vw;
-                --logo-vertical-shift: -20px;
-                --text-top-margin: 10px; 
+                --logo-vertical-shift: -30px;
+                --text-top-margin: 15px; 
                 --text-spacing: 6px;
             }
         }
